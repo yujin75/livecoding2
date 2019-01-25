@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>articles</h1>
+    <table class="table">
+  <thead>
+{#  열 정보 생성#}
+    <tr>
+        <th>id</th>
+        <th>title</th>
+        <th>created_at</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for article in articles %}
+          <tr>
+                <td>{{ article.id }}</td>
+                <td>
+                    <a href="{% url 'detail' article.id %}">
+                        {{ article.title }}
+                    </a>
+                </td>
+                <td>{{ article.created_at }}</td>
+          </tr>
+  {% endfor %}
+  </tbody>
+</table>
+<a href="{% url 'create'  %}"><button class="btn btn-warning">게시글 작성</button></a>
+{% endblock %}
